@@ -26,8 +26,67 @@
       title="APES &raquo; Comments Feed"
       href="https://apeserc.com/index.php/comments/feed/"
     />
+    <script>
+      // JavaScript to display the modal when the page loads
+      // window.onload = function () {
+      //   var modal = document.getElementById("myModal");
+      //   modal.style.display = "block";
 
+      //   var closeButton = document.getElementById("closeModal");
+      //   closeButton.onclick = function () {
+      //     modal.style.display = "none";
+      //   };
+      // };
+
+      window.onload = function () {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+        // Close the modal when clicking outside of it
+        window.onclick = function (event) {
+          var closeButton = document.getElementById("closeModal");
+          var closingAudio = document.getElementById("closingAudio");
+
+          if (closeButton) {
+            modal.style.display = "none";
+            closingAudio.play();
+          } else {
+            if (event.target === modal) {
+              modal.style.display = "none";
+            }
+            closingAudio.play();
+          }
+        };
+      };
+    </script>
     <style>
+      .modal {
+        display: none;
+        position: fixed;
+        top: 15%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      .modal-content {
+        background-color: #fff;
+        width: 300px;
+        margin: 15% auto;
+        padding: 20px;
+        position: relative;
+      }
+
+      .close {
+        position: absolute;
+        top: -9px;
+        right: 19px;
+        cursor: pointer;
+        font-size: 48px;
+        color: white;
+        /* box-shadow: 1px 2px 15px -10px #000; */
+      }
       @font-face {
         font-family: "Alien Spaceship"; /* Choose a unique name for your font */
         src: url("/font/AlienSpaceship.otf") format("woff2"),
@@ -1931,6 +1990,21 @@
     itemscope="itemscope"
     itemtype="https://schema.org/WebPage"
   >
+    <!-- pop up modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div>
+          <img src="/images/logo.png" alt="" />
+        </div>
+
+        <!-- Content for the pop-up -->
+        <h2>"Drop the beat, not the question. Wanna vibe?"</h2>
+      </div>
+    </div>
+    <audio id="closingAudio" src="/audio/song.mp3"></audio>
+    <!-- pop up modal -->
+
     <div id="outer-wrap" class="site clr">
       <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
 
